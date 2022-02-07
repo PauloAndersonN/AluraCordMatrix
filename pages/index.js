@@ -1,9 +1,7 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
-import appConfig from './config.json';
 import React from 'react';
-import {useRouter} from 'next/router';
-
-
+import { useRouter } from 'next/router';
+import appConfig from './config.json';
 
 function Titulo(props) {
   const Tag = props.tag || 'h1';
@@ -35,24 +33,18 @@ function Titulo(props) {
 // export default HomePage
 
 export default function PaginaInicial() {
-    //const username = 'PauloAndersonN';
-    const [username, setUsername] = React.useState('PauloAndersonN');
-    const roteamento = useRouter();
-    
+  // const username = 'omariosouto';
+  const [username, setUsername] = React.useState('');
+  const roteamento = useRouter();
 
   return (
     <>
-      
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           backgroundColor: appConfig.theme.colors.primary[500],
-          backgroundImage: 'url(https://wallpapercave.com/wp/wp2730855.gif) ',
+          backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
           backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
-        
-       
-          //url(http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif) no-repeat center center fixed;
-        
         }}
       >
         <Box
@@ -73,12 +65,12 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
-            onSubmit={function (infosDoevento){
-                infosDoevento.preventDefault();
-                console.log("alguem submeteu um form");
-                roteamento.push('./chat');
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              console.log('Alguém submeteu o form');
+              roteamento.push(`/chat?username=${username}`);
+              // window.location.href = '/chat';
             }}
-
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -89,23 +81,28 @@ export default function PaginaInicial() {
               {appConfig.name}
             </Text>
 
-           <input type="text" 
-                  value={username}
-                  onChange={function handler(event){
-                      
-                      const valor = event.target.value;
-                      setUsername(valor);
-                      
-                  }}
-           />
+            {/* <input
+                            type="text"
+                            value={username}
+                            onChange={function (event) {
+                                console.log('usuario digitou', event.target.value);
+                                // Onde ta o valor?
+                                const valor = event.target.value;
+                                // Trocar o valor da variavel
+                                // através do React e avise quem precisa
+                                setUsername(valor);
+                            }}
+                        /> */}
             <TextField
               value={username}
-              onChange={function handler(event){
-                      
+              onChange={function (event) {
+                console.log('usuario digitou', event.target.value);
+                // Onde ta o valor?
                 const valor = event.target.value;
+                // Trocar o valor da variavel
+                // através do React e avise quem precisa
                 setUsername(valor);
-                
-            }}
+              }}
               fullWidth
               textFieldColors={{
                 neutral: {

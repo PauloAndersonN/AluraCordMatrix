@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@skynexui/components": "^1.24.2"
+    "@skynexui/components": "^1.24.2",
+    "@supabase/supabase-js": "^1.30.0"
   }
 }
